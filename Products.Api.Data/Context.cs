@@ -23,7 +23,7 @@ namespace Products.Api.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=JVELEZ-NB\\MSSQLSERVER2;Database=Product-mgt-db;User Id=sa;Password=root;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true");
+                optionsBuilder.UseSqlServer("Server=<Your-Server>;Database=Product-mgt-db;User Id=<Your-User>;Password=<Your-Password>;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true");
             }
         }
     }
