@@ -1,16 +1,13 @@
-﻿using Products.Api.Data.Models;
+﻿using Products.Api.Entities;
 using Products.Api.Entities.Response;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Products.Api.Data.Repository.Interface
+namespace Products.Api.Services.Interface
 {
-    /// <summary>
-    /// Repository Class to connect to database.
-    /// </summary>
-    public interface IProductRepositorty
+    public interface IProductService
     {
         Task<ApiResponse<Product>> AddProduct(Product product);
         Task<ApiResponse<string>> DeleteProduct(int id);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Products.Api.Entities
 {
-    public abstract class BaseEntity
+    public abstract class Base
     {
         public int Id { get; set; }
     }
