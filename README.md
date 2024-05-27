@@ -17,7 +17,9 @@ Before executing this solution, you need to follow these steps:
 
 3. Open your visual studio and select default <code>Products.Api</code> as a launch project
 
-4. Open the Postman folder and import collection from Postman execute the <code>authlogin</code> endpoint and start to test every endpoint.
+4. Open the Postman folder and import collection from Postman execute the <code>authlogin</code> endpoint to get a bearer token and start to test every endpoint. 
 
-5. If you want to use swagger you can run this URL :
+   PD: <code>{username: test - password: password}</code> for JSON body in authenticate endpoint. Enpoints to create, update, and delete products need a bearer token, you can get products without authentication and authorization.
+
+6. If you want to use swagger you can run this URL :
    <code>https://localhost:5001/swagger</code>
