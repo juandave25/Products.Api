@@ -9,6 +9,7 @@ using AutoMapper;
 using Products.Api.Entities;
 using Product = Products.Api.Entities.Product;
 using Products.Api.Entities.Dto.Product;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Products.Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace Products.Api.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddProduct(AddproductRequest req)
         {
@@ -36,6 +38,7 @@ namespace Products.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
@@ -69,6 +72,7 @@ namespace Products.Api.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(int id, Entities.Dto.Product.UpdateProductRequest req)
         {

@@ -19,6 +19,9 @@ using Products.Api.Data;
 using Products.Api.Data.Repository.Interface;
 using Products.Api.Profiles;
 using Products.Api.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Products.Api
 {
@@ -39,8 +42,32 @@ namespace Products.Api
 
             services.AddScoped<IProductRepositorty, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddSingleton<ITokenService, TokenService>();
             services.AddAutoMapper(typeof(ProductProfile));
             services.AddAutoMapper(typeof(ApiProfile));
+
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+
             services.AddControllers();
         }
 
@@ -50,6 +77,8 @@ namespace Products.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {
@@ -59,9 +88,16 @@ namespace Products.Api
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
