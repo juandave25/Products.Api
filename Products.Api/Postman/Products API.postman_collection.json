@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "3798bd79-391f-4375-82d9-bfe677e54bfc",
+		"name": "Products API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29933716"
+	},
+	"item": [
+		{
+			"name": "get-all-products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-products-name-price-range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/product/search?name=Table",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"product",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Table"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0IiwianRpIjoiNjI1NDI4ZDEtYzcyZC00YTU4LTk2ZTctZjQ1MTk4YWM0OGUzIiwiZXhwIjoxNzE2NzkyMTE1LCJpc3MiOiJZb3VySXNzdWVyIiwiYXVkIjoiWW91ckF1ZGllbmNlIn0.H4nxZVWo8HkL4t_GzoAsRjj5Yw5tN1SAaiRsbUKJqCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Lamp\",\r\n    \"description\":\"Awesome Lamp\",\r\n    \"category\": \"home\",\r\n    \"price\": 200,\r\n    \"quantity\": 300\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{version}}/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0IiwianRpIjoiNjI1NDI4ZDEtYzcyZC00YTU4LTk2ZTctZjQ1MTk4YWM0OGUzIiwiZXhwIjoxNzE2NzkyMTE1LCJpc3MiOiJZb3VySXNzdWVyIiwiYXVkIjoiWW91ckF1ZGllbmNlIn0.H4nxZVWo8HkL4t_GzoAsRjj5Yw5tN1SAaiRsbUKJqCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Lamp\",\r\n    \"description\":\"Awesome Lamp\",\r\n    \"category\": \"Furniture\",\r\n    \"price\": 250,\r\n    \"quantity\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{version}}/product/3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"product",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0IiwianRpIjoiNjI1NDI4ZDEtYzcyZC00YTU4LTk2ZTctZjQ1MTk4YWM0OGUzIiwiZXhwIjoxNzE2NzkyMTE1LCJpc3MiOiJZb3VySXNzdWVyIiwiYXVkIjoiWW91ckF1ZGllbmNlIn0.H4nxZVWo8HkL4t_GzoAsRjj5Yw5tN1SAaiRsbUKJqCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{version}}/product/3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"product",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{version}}/auth/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{version}}",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "htpps://localhost:5001",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "api/v1",
+			"type": "string"
+		}
+	]
+}
